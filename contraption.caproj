@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2project>
+    <name>contraption</name>
+    <description></description>
+    <version>1.0.0.0</version>
+    <author>Good Evening, Grames</author>
+    <author-email></author-email>
+    <author-website>http://</author-website>
+    <app-id>com.goodeveningrames.contraption</app-id>
+    <unique-id>2m2oqhlgof90t</unique-id>
+    <saved-with-version>22700</saved-with-version>
+    <used-plugins>
+        <plugin author="N-Dream AG" id="AirConsole" version="1">AirConsole</plugin>
+        <plugin author="Scirra" id="Arr" version="1">Array</plugin>
+        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
+        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
+        <plugin author="Scirra" id="Function" version="1">Function</plugin>
+        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
+    </used-plugins>
+    <used-behaviors>
+        <behavior author="Scirra" id="Physics" version="1">Physics</behavior>
+        <behavior author="Scirra" id="Pin" version="1">Pin</behavior>
+        <behavior author="Scirra" id="Rotate" version="1">Rotate</behavior>
+    </used-behaviors>
+    <used-effects />
+    <configurations>
+        <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
+    </configurations>
+    <window-size>
+        <width>1920</width>
+        <height>1080</height>
+    </window-size>
+    <pixel-rounding>0</pixel-rounding>
+    <preview-effects>1</preview-effects>
+    <use-loader-layout>0</use-loader-layout>
+    <configuration-settings>
+        <prop name="Clear background">Yes</prop>
+        <prop name="Enable WebGL">On</prop>
+        <prop name="Fullscreen in browser">Letterbox scale</prop>
+        <prop name="Fullscreen scaling">High quality</prop>
+        <prop name="Loader style">Progress bar &amp; logo</prop>
+        <prop name="Orientations">Landscape</prop>
+        <prop name="Pause on unfocus">No</prop>
+        <prop name="Physics engine">Box2D asm.js</prop>
+        <prop name="Preview browser">(default)</prop>
+        <prop name="Sampling">Linear</prop>
+        <prop name="Use high-DPI display">Yes</prop>
+    </configuration-settings>
+    <object-folder>
+        <object-type name="AirConsole" sid="7294831948435143">
+            <plugin id="AirConsole" />
+        </object-type>
+        <object-type global="1" name="Array" sid="2399943017898297">
+            <plugin id="Arr" />
+        </object-type>
+        <object-type name="Browser" sid="2844458562006701">
+            <plugin id="Browser" />
+        </object-type>
+        <object-type name="player" sid="1285391658591815">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="deviceIndex" sid="4177902624127498" type="number" />
+                <instance-variable name="movementIndex" sid="2056660500121735" type="number" />
+                <instance-variable name="soundName" sid="2916886756294223" type="string" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Physics" sid="791997455547746">
+                    <behavior id="Physics" />
+                </behavior-type>
+                <behavior-type name="Rotate" sid="5691152051807401">
+                    <behavior id="Rotate" />
+                </behavior-type>
+            </behaviors>
+            <container>
+                <type>arrow</type>
+                <type>player</type>
+            </container>
+            <animation-folder>
+                <animation framecount="3" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="8928285021531311" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Dropbox\Downloads (Personal)\bluecircle.png">
+                        <collision-poly>
+                            <point x="0.148438" y="0.148438" />
+                            <point x="0.5" y="0" />
+                            <point x="0.851563" y="0.148438" />
+                            <point x="1" y="0.5" />
+                            <point x="0.851563" y="0.851563" />
+                            <point x="0.5" y="1" />
+                            <point x="0.148438" y="0.851563" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Dropbox\Downloads (Personal)\redcircle.png">
+                        <collision-poly>
+                            <point x="0.148438" y="0.148438" />
+                            <point x="0.5" y="0" />
+                            <point x="0.851563" y="0.148438" />
+                            <point x="1" y="0.5" />
+                            <point x="0.851563" y="0.851563" />
+                            <point x="0.5" y="1" />
+                            <point x="0.148438" y="0.851563" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Dropbox\Downloads (Personal)\yellowcircle.png">
+                        <collision-poly>
+                            <point x="0.148438" y="0.148438" />
+                            <point x="0.5" y="0" />
+                            <point x="0.851563" y="0.148438" />
+                            <point x="1" y="0.5" />
+                            <point x="0.851563" y="0.851563" />
+                            <point x="0.5" y="1" />
+                            <point x="0.148438" y="0.851563" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+                <animation framecount="3" loop="0" name="Play" pingpong="0" repeatcount="1" repeatto="0" sid="4913973530942464" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Dropbox\Downloads (Personal)\lbluecircle.png">
+                        <collision-poly>
+                            <point x="0.148438" y="0.148438" />
+                            <point x="0.5" y="0" />
+                            <point x="0.851563" y="0.148438" />
+                            <point x="1" y="0.5" />
+                            <point x="0.851563" y="0.851563" />
+                            <point x="0.5" y="1" />
+                            <point x="0.148438" y="0.851563" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Dropbox\Downloads (Personal)\lredcircle.png">
+                        <collision-poly>
+                            <point x="0.148438" y="0.148438" />
+                            <point x="0.5" y="0" />
+                            <point x="0.851563" y="0.148438" />
+                            <point x="1" y="0.5" />
+                            <point x="0.851563" y="0.851563" />
+                            <point x="0.5" y="1" />
+                            <point x="0.148438" y="0.851563" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Dropbox\Downloads (Personal)\lyellowcircle.png">
+                        <collision-poly>
+                            <point x="0.148438" y="0.148438" />
+                            <point x="0.5" y="0" />
+                            <point x="0.851563" y="0.148438" />
+                            <point x="1" y="0.5" />
+                            <point x="0.851563" y="0.851563" />
+                            <point x="0.5" y="1" />
+                            <point x="0.148438" y="0.851563" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Function" sid="2553711339725099">
+            <plugin id="Function" />
+        </object-type>
+        <object-type name="Audio" sid="3344105618746124">
+            <plugin id="Audio" />
+        </object-type>
+        <object-type name="Text" sid="7165243006113935">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="TiledBackground" sid="2070644561492563">
+            <plugin id="TiledBg" />
+            <behaviors>
+                <behavior-type name="Physics" sid="437130840879416">
+                    <behavior id="Physics" />
+                </behavior-type>
+            </behaviors>
+            <texture />
+        </object-type>
+        <object-type name="Keyboard" sid="8465677711044043">
+            <plugin id="Keyboard" />
+        </object-type>
+        <object-type name="arrow" sid="194495910208746">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Pin" sid="7962929490705002">
+                    <behavior id="Pin" />
+                </behavior-type>
+            </behaviors>
+            <container>
+                <type>arrow</type>
+                <type>player</type>
+            </container>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="2712804051130357" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="D:\Dropbox\Downloads (Personal)\bluecircle.png">
+                        <collision-poly>
+                            <point x="0.148438" y="0.148438" />
+                            <point x="0.5" y="0" />
+                            <point x="0.851563" y="0.148438" />
+                            <point x="1" y="0.5" />
+                            <point x="0.851563" y="0.851563" />
+                            <point x="0.5" y="1" />
+                            <point x="0.148438" y="0.851563" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+    </object-folder>
+    <families />
+    <layout-folder>
+        <layout>Layout 1.xml</layout>
+        <layout>Storage.xml</layout>
+    </layout-folder>
+    <event-folder>
+        <event-sheet>Event sheet 1.xml</event-sheet>
+    </event-folder>
+    <global-instances>
+        <global-instance type="AirConsole" uid="0" />
+        <global-instance type="Browser" uid="2" />
+        <global-instance type="Function" uid="4" />
+        <global-instance type="Audio" uid="5">
+            <properties>
+                <timescale-audio>Off</timescale-audio>
+                <saveload>All</saveload>
+                <play-in-background>No</play-in-background>
+                <positioned-audio></positioned-audio>
+                <panning-model>HRTF</panning-model>
+                <distance-model>Inverse</distance-model>
+                <listener-z-height>600</listener-z-height>
+                <reference-distance>600</reference-distance>
+                <maximum-distance>10000</maximum-distance>
+                <roll-off-factor>1</roll-off-factor>
+            </properties>
+        </global-instance>
+        <global-instance type="Keyboard" uid="12" />
+    </global-instances>
+    <sounds-folder>
+        <file name="box0.m4a" />
+        <file name="box0.ogg" />
+        <file name="box1.m4a" />
+        <file name="box1.ogg" />
+        <file name="box2.m4a" />
+        <file name="box2.ogg" />
+        <file name="box3.m4a" />
+        <file name="box3.ogg" />
+        <file name="box4.m4a" />
+        <file name="box4.ogg" />
+        <file name="box5.m4a" />
+        <file name="box5.ogg" />
+        <file name="box6.m4a" />
+        <file name="box6.ogg" />
+        <file name="box7.m4a" />
+        <file name="box7.ogg" />
+        <file name="Fuzz 0.m4a" />
+        <file name="Fuzz 0.ogg" />
+        <file name="Fuzz 1.m4a" />
+        <file name="Fuzz 1.ogg" />
+        <file name="Fuzz 2.m4a" />
+        <file name="Fuzz 2.ogg" />
+        <file name="Fuzz 3.m4a" />
+        <file name="Fuzz 3.ogg" />
+        <file name="Fuzz 4.m4a" />
+        <file name="Fuzz 4.ogg" />
+        <file name="Fuzz 5.m4a" />
+        <file name="Fuzz 5.ogg" />
+        <file name="Fuzz 6.m4a" />
+        <file name="Fuzz 6.ogg" />
+        <file name="Fuzz 7.m4a" />
+        <file name="Fuzz 7.ogg" />
+        <file name="Pulse 0.m4a" />
+        <file name="Pulse 0.ogg" />
+        <file name="Pulse 1.m4a" />
+        <file name="Pulse 1.ogg" />
+        <file name="Pulse 2.m4a" />
+        <file name="Pulse 2.ogg" />
+        <file name="Pulse 3.m4a" />
+        <file name="Pulse 3.ogg" />
+        <file name="Pulse 4.m4a" />
+        <file name="Pulse 4.ogg" />
+        <file name="Pulse 5.m4a" />
+        <file name="Pulse 5.ogg" />
+        <file name="Pulse 6.m4a" />
+        <file name="Pulse 6.ogg" />
+        <file name="Pulse 7.m4a" />
+        <file name="Pulse 7.ogg" />
+        <file name="Space FM 0.m4a" />
+        <file name="Space FM 0.ogg" />
+        <file name="Space FM 1.m4a" />
+        <file name="Space FM 1.ogg" />
+        <file name="Space FM 2.m4a" />
+        <file name="Space FM 2.ogg" />
+        <file name="Space FM 3.m4a" />
+        <file name="Space FM 3.ogg" />
+        <file name="Space FM 4.m4a" />
+        <file name="Space FM 4.ogg" />
+        <file name="Space FM 5.m4a" />
+        <file name="Space FM 5.ogg" />
+        <file name="Space FM 6.m4a" />
+        <file name="Space FM 6.ogg" />
+        <file name="Space FM 7.m4a" />
+        <file name="Space FM 7.ogg" />
+    </sounds-folder>
+    <music-folder />
+    <files-folder>
+        <file-folder name="Icons">
+            <file name="icon-16.png" />
+            <file name="icon-32.png" />
+            <file name="icon-114.png" />
+            <file name="icon-128.png" />
+            <file name="icon-256.png" />
+            <file name="loading-logo.png" />
+        </file-folder>
+    </files-folder>
+</c2project>

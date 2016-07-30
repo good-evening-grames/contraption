@@ -1,0 +1,1837 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 1</name>
+    <events>
+        <variable constant="0" name="button1" sid="4208790509817259" static="0" type="text">play</variable>
+        <variable constant="0" name="button2" sid="3703119625235582" static="0" type="text">stop</variable>
+        <variable constant="0" name="button3" sid="1152953413934539" static="0" type="text">rotate</variable>
+        <variable constant="0" name="button4" sid="545092198224493" static="0" type="text">stopRotating</variable>
+        <variable constant="0" name="nextCollisionIndex" sid="2611046960982665" static="0" type="number">0</variable>
+        <event-block sid="5363702848609369">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="2666179114299207" type="System" />
+            </conditions>
+            <actions>
+                <action behavior="Physics" disabled="1" id="12" name="Set world gravity" sid="1372086191673994" type="player">
+                    <param id="0" name="Gravity">10</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="3249541374149511">
+                    <conditions>
+                        <condition id="3" name="For each element" sid="8601582406303745" type="Array">
+                            <param id="0" name="Axes">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="2" name="Set at X" sid="8544755666412544" type="Array">
+                            <param id="0" name="X">Array.CurX</param>
+                            <param id="1" name="Value">-1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="804061179430238">
+                    <conditions />
+                    <actions>
+                        <action id="3" name="Game ready" sid="1577307619298693" type="AirConsole" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="2651405161501326">
+            <conditions>
+                <condition id="-1" name="Every tick" sid="9448357009267188" type="System" />
+            </conditions>
+            <actions>
+                <action disabled="1" id="0" name="Set text" sid="1345336327485351" type="Text">
+                    <param id="0" name="Text">Array.AsJSON</param>
+                </action>
+                <action id="0" name="Set text" sid="4521825029102486" type="Text">
+                    <param id="0" name="Text">player.Count &amp; &quot; players connected&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="1628446669423016">
+            <conditions>
+                <condition id="2" name="On device join" sid="473819974808822" type="AirConsole" />
+                <condition id="5" inverted="1" name="Contains value" sid="3583328705812279" type="Array">
+                    <param id="0" name="Value">AirConsole.DeviceIDJoin</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <variable constant="0" name="assigned" sid="2327935437607013" static="0" type="text">false</variable>
+                <event-block sid="2514978446090764">
+                    <conditions>
+                        <condition id="3" name="For each element" sid="5934798124887372" type="Array">
+                            <param id="0" name="Axes">2</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="6583552248087128">
+                            <conditions>
+                                <condition id="4" name="Compare current value" sid="3787602039977147" type="Array">
+                                    <param id="0" name="Comparison">0</param>
+                                    <param id="1" name="Value">-1</param>
+                                </condition>
+                                <condition id="-14" name="Compare variable" sid="1103890893568829" type="System">
+                                    <param id="0" name="Variable">assigned</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;false&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="5676035143146374" type="System">
+                                    <param id="0" name="Variable">assigned</param>
+                                    <param id="1" name="Value">&quot;true&quot;</param>
+                                </action>
+                                <action id="0" name="Call function" sid="9433426232832566" type="Function">
+                                    <param id="0" name="Name">&quot;assignPlayer&quot;</param>
+                                    <param id="1" name="Parameter {n}">AirConsole.DeviceIDJoin{###}&quot;insert&quot;{###}Array.CurX</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="2046030072698591">
+            <conditions>
+                <condition id="0" name="On function" sid="7943386675915427" type="Function">
+                    <param id="0" name="Name">&quot;assignPlayer&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="5382087364042629">
+                    <conditions>
+                        <condition id="1" name="Compare parameter" sid="8153389775008544" type="Function">
+                            <param id="0" name="Index">1</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;insert&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="2" name="Set at X" sid="657795057767978" type="Array">
+                            <param id="0" name="X">Function.Param(2)</param>
+                            <param id="1" name="Value">Function.Param(0)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7029932771695146">
+                    <conditions>
+                        <condition id="-22" name="Else" sid="1219599774853134" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="5" name="Push" sid="2528663240976371" type="Array">
+                            <param id="0" name="Where">0</param>
+                            <param id="1" name="Value">Function.Param(0)</param>
+                            <param id="2" name="Axis">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="4334436310754217">
+                    <conditions />
+                    <actions>
+                        <action id="-3" name="Create object" sid="9133970297876909" type="System">
+                            <param id="0" name="Object to create">player</param>
+                            <param id="1" name="Layer">0</param>
+                            <param id="2" name="X">random(100,LayoutWidth - 100)</param>
+                            <param id="3" name="Y">random(100,LayoutHeight - 100)</param>
+                        </action>
+                        <action behavior="Pin" id="0" name="Pin to object" sid="5690165895707493" type="arrow">
+                            <param id="0" name="Pin to">player</param>
+                            <param id="1" name="Mode">0</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="8662457253212779" type="player">
+                            <param id="0" name="Instance variable">deviceIndex</param>
+                            <param id="1" name="Value">Function.Param(0)</param>
+                        </action>
+                        <action id="0" name="Call function" sid="2342277095641436" type="Function">
+                            <param id="0" name="Name">&quot;assignSound&quot;</param>
+                            <param id="1" name="Parameter {n}">player.UID</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="1677484917938937">
+            <conditions>
+                <condition id="0" name="On function" sid="1488483193058955" type="Function">
+                    <param id="0" name="Name">&quot;assignSound&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+            <sub-events>
+                <variable constant="0" name="randInstrument" sid="9239683447191876" static="0" type="number">0</variable>
+                <event-block sid="3849865861434888">
+                    <conditions>
+                        <condition id="-14" name="Pick by unique ID" sid="7167608277002079" type="player">
+                            <param id="0" name="Unique ID">Function.Param(0)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="2497376050488332" type="System">
+                            <param id="0" name="Variable">randInstrument</param>
+                            <param id="1" name="Value">floor(random(3))</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="3456126015477065">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="5270081209796639" type="System">
+                                    <param id="0" name="Variable">randInstrument</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="6935802012411297" type="player">
+                                    <param id="0" name="Instance variable">soundName</param>
+                                    <param id="1" name="Value">&quot;box&quot; &amp; floor(random(8))</param>
+                                </action>
+                                <action id="5" name="Set frame" sid="3747360910185276" type="player">
+                                    <param id="0" name="Frame number">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="2772547096847257">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="8745728807639058" type="System">
+                                    <param id="0" name="Variable">randInstrument</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="8647431412554357" type="player">
+                                    <param id="0" name="Instance variable">soundName</param>
+                                    <param id="1" name="Value">&quot;Fuzz &quot; &amp; floor(random(8))</param>
+                                </action>
+                                <action id="5" name="Set frame" sid="2117124167628313" type="player">
+                                    <param id="0" name="Frame number">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="7659198341573884">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="6697957561386036" type="System">
+                                    <param id="0" name="Variable">randInstrument</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="8253259623952654" type="player">
+                                    <param id="0" name="Instance variable">soundName</param>
+                                    <param id="1" name="Value">&quot;Space FM &quot; &amp; floor(random(8))</param>
+                                </action>
+                                <action id="5" name="Set frame" sid="4282709319980758" type="player">
+                                    <param id="0" name="Frame number">2</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block any="1" sid="6993424649310159">
+            <conditions>
+                <condition id="0" name="On collision with another object" sid="8685956727266453" type="player">
+                    <param id="0" name="Object">player</param>
+                </condition>
+                <condition id="0" name="On collision with another object" sid="9966813544733466" type="player">
+                    <param id="0" name="Object">TiledBackground</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="7" name="Play (by name)" sid="9518287615658673" type="Audio">
+                    <param id="0" name="Folder">0</param>
+                    <param id="1" name="Audio file name">&quot;Pulse &quot; &amp; nextCollisionIndex</param>
+                    <param id="3" name="Loop">0</param>
+                    <param id="4" name="Volume">-10</param>
+                    <param id="2" name="Tag (optional)">&quot;collision&quot;</param>
+                </action>
+                <action id="-10" name="Add to" sid="8482303820260449" type="System">
+                    <param id="0" name="Variable">nextCollisionIndex</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="1046029718686292">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="2770076233801067" type="System">
+                            <param id="0" name="Variable">nextCollisionIndex</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">8</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="54766318303479" type="System">
+                            <param id="0" name="Variable">nextCollisionIndex</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-group description="" sid="2628954730064906" title="Player Controls">
+            <sub-events>
+                <event-group description="" sid="2473601835645467" title="Device 0">
+                    <sub-events>
+                        <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">0</variable>
+                        <event-block sid="1226413345909272">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="289152838752317" type="player">
+                                    <param id="0" name="Instance variable">deviceIndex</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">Array.At(DEVICEINDEX)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="4890772259685104">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8635674168853563" type="AirConsole">
+                                            <param id="0" name="Value">button1</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                            <param id="0" name="Impulse">200</param>
+                                            <param id="1" name="Angle">player.Angle</param>
+                                            <param id="2" name="Image point">0</param>
+                                        </action>
+                                        <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
+                                            <param id="0" name="Folder">0</param>
+                                            <param id="1" name="Audio file name">player.soundName</param>
+                                            <param id="3" name="Loop">0</param>
+                                            <param id="4" name="Volume">-10</param>
+                                            <param id="2" name="Tag (optional)">&quot;player&quot; &amp; player.deviceIndex</param>
+                                        </action>
+                                        <action id="4" name="Set animation" sid="7635433821866747" type="player">
+                                            <param id="0" name="Animation">&quot;Play&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9836922898685177">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="1726993268273771" type="AirConsole">
+                                            <param id="0" name="Value">button2</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="2660758487787543" type="player">
+                                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="5705870673769563">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="2345780932606845" type="AirConsole">
+                                            <param id="0" name="Value">button3</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="1820901627470255" type="player">
+                                            <param id="0" name="Speed">80</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="3063472017572516">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8766223081282974" type="AirConsole">
+                                            <param id="0" name="Value">button4</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
+                                            <param id="0" name="Speed">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9933990043138106">
+                                    <conditions>
+                                        <condition id="3" name="On device left" sid="6826422028561886" type="AirConsole">
+                                            <param id="0" name="DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Set at X" sid="8390249572289325" type="Array">
+                                            <param id="0" name="X">DEVICEINDEX</param>
+                                            <param id="1" name="Value">-1</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="8170293635732778" type="player" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="9104889575472758" title="Device 1">
+                    <sub-events>
+                        <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">1</variable>
+                        <event-block sid="1226413345909272">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="289152838752317" type="player">
+                                    <param id="0" name="Instance variable">deviceIndex</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">Array.At(DEVICEINDEX)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="4890772259685104">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8635674168853563" type="AirConsole">
+                                            <param id="0" name="Value">button1</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                            <param id="0" name="Impulse">200</param>
+                                            <param id="1" name="Angle">player.Angle</param>
+                                            <param id="2" name="Image point">0</param>
+                                        </action>
+                                        <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
+                                            <param id="0" name="Folder">0</param>
+                                            <param id="1" name="Audio file name">player.soundName</param>
+                                            <param id="3" name="Loop">0</param>
+                                            <param id="4" name="Volume">-10</param>
+                                            <param id="2" name="Tag (optional)">&quot;player&quot; &amp; player.deviceIndex</param>
+                                        </action>
+                                        <action id="4" name="Set animation" sid="7635433821866747" type="player">
+                                            <param id="0" name="Animation">&quot;Play&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9836922898685177">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="1726993268273771" type="AirConsole">
+                                            <param id="0" name="Value">button2</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="2660758487787543" type="player">
+                                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="5705870673769563">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="2345780932606845" type="AirConsole">
+                                            <param id="0" name="Value">button3</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
+                                            <param id="0" name="Speed">80</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="3063472017572516">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8766223081282974" type="AirConsole">
+                                            <param id="0" name="Value">button4</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
+                                            <param id="0" name="Speed">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9933990043138106">
+                                    <conditions>
+                                        <condition id="3" name="On device left" sid="6826422028561886" type="AirConsole">
+                                            <param id="0" name="DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Set at X" sid="8390249572289325" type="Array">
+                                            <param id="0" name="X">DEVICEINDEX</param>
+                                            <param id="1" name="Value">-1</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="8170293635732778" type="player" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="3300630919810119" title="Device 2">
+                    <sub-events>
+                        <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">2</variable>
+                        <event-block sid="1226413345909272">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="289152838752317" type="player">
+                                    <param id="0" name="Instance variable">deviceIndex</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">Array.At(DEVICEINDEX)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="4890772259685104">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8635674168853563" type="AirConsole">
+                                            <param id="0" name="Value">button1</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                            <param id="0" name="Impulse">200</param>
+                                            <param id="1" name="Angle">player.Angle</param>
+                                            <param id="2" name="Image point">0</param>
+                                        </action>
+                                        <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
+                                            <param id="0" name="Folder">0</param>
+                                            <param id="1" name="Audio file name">player.soundName</param>
+                                            <param id="3" name="Loop">0</param>
+                                            <param id="4" name="Volume">-10</param>
+                                            <param id="2" name="Tag (optional)">&quot;player&quot; &amp; player.deviceIndex</param>
+                                        </action>
+                                        <action id="4" name="Set animation" sid="7635433821866747" type="player">
+                                            <param id="0" name="Animation">&quot;Play&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9836922898685177">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="1726993268273771" type="AirConsole">
+                                            <param id="0" name="Value">button2</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="2660758487787543" type="player">
+                                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="5705870673769563">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="2345780932606845" type="AirConsole">
+                                            <param id="0" name="Value">button3</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
+                                            <param id="0" name="Speed">80</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="3063472017572516">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8766223081282974" type="AirConsole">
+                                            <param id="0" name="Value">button4</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
+                                            <param id="0" name="Speed">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9933990043138106">
+                                    <conditions>
+                                        <condition id="3" name="On device left" sid="6826422028561886" type="AirConsole">
+                                            <param id="0" name="DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Set at X" sid="8390249572289325" type="Array">
+                                            <param id="0" name="X">DEVICEINDEX</param>
+                                            <param id="1" name="Value">-1</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="8170293635732778" type="player" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="389149531477673" title="Device 3">
+                    <sub-events>
+                        <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">3</variable>
+                        <event-block sid="1226413345909272">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="289152838752317" type="player">
+                                    <param id="0" name="Instance variable">deviceIndex</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">Array.At(DEVICEINDEX)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="4890772259685104">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8635674168853563" type="AirConsole">
+                                            <param id="0" name="Value">button1</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                            <param id="0" name="Impulse">200</param>
+                                            <param id="1" name="Angle">player.Angle</param>
+                                            <param id="2" name="Image point">0</param>
+                                        </action>
+                                        <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
+                                            <param id="0" name="Folder">0</param>
+                                            <param id="1" name="Audio file name">player.soundName</param>
+                                            <param id="3" name="Loop">0</param>
+                                            <param id="4" name="Volume">-10</param>
+                                            <param id="2" name="Tag (optional)">&quot;player&quot; &amp; player.deviceIndex</param>
+                                        </action>
+                                        <action id="4" name="Set animation" sid="7635433821866747" type="player">
+                                            <param id="0" name="Animation">&quot;Play&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9836922898685177">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="1726993268273771" type="AirConsole">
+                                            <param id="0" name="Value">button2</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="2660758487787543" type="player">
+                                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="5705870673769563">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="2345780932606845" type="AirConsole">
+                                            <param id="0" name="Value">button3</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
+                                            <param id="0" name="Speed">80</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="3063472017572516">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8766223081282974" type="AirConsole">
+                                            <param id="0" name="Value">button4</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
+                                            <param id="0" name="Speed">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9933990043138106">
+                                    <conditions>
+                                        <condition id="3" name="On device left" sid="6826422028561886" type="AirConsole">
+                                            <param id="0" name="DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Set at X" sid="8390249572289325" type="Array">
+                                            <param id="0" name="X">DEVICEINDEX</param>
+                                            <param id="1" name="Value">-1</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="8170293635732778" type="player" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="3578572687006823" title="Device 4">
+                    <sub-events>
+                        <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">4</variable>
+                        <event-block sid="1226413345909272">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="289152838752317" type="player">
+                                    <param id="0" name="Instance variable">deviceIndex</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">Array.At(DEVICEINDEX)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="4890772259685104">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8635674168853563" type="AirConsole">
+                                            <param id="0" name="Value">button1</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                            <param id="0" name="Impulse">200</param>
+                                            <param id="1" name="Angle">player.Angle</param>
+                                            <param id="2" name="Image point">0</param>
+                                        </action>
+                                        <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
+                                            <param id="0" name="Folder">0</param>
+                                            <param id="1" name="Audio file name">player.soundName</param>
+                                            <param id="3" name="Loop">0</param>
+                                            <param id="4" name="Volume">-10</param>
+                                            <param id="2" name="Tag (optional)">&quot;player&quot; &amp; player.deviceIndex</param>
+                                        </action>
+                                        <action id="4" name="Set animation" sid="7635433821866747" type="player">
+                                            <param id="0" name="Animation">&quot;Play&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9836922898685177">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="1726993268273771" type="AirConsole">
+                                            <param id="0" name="Value">button2</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="2660758487787543" type="player">
+                                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="5705870673769563">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="2345780932606845" type="AirConsole">
+                                            <param id="0" name="Value">button3</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
+                                            <param id="0" name="Speed">80</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="3063472017572516">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8766223081282974" type="AirConsole">
+                                            <param id="0" name="Value">button4</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
+                                            <param id="0" name="Speed">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9933990043138106">
+                                    <conditions>
+                                        <condition id="3" name="On device left" sid="6826422028561886" type="AirConsole">
+                                            <param id="0" name="DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Set at X" sid="8390249572289325" type="Array">
+                                            <param id="0" name="X">DEVICEINDEX</param>
+                                            <param id="1" name="Value">-1</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="8170293635732778" type="player" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="400519728801732" title="Device 5">
+                    <sub-events>
+                        <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">5</variable>
+                        <event-block sid="1226413345909272">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="289152838752317" type="player">
+                                    <param id="0" name="Instance variable">deviceIndex</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">Array.At(DEVICEINDEX)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="4890772259685104">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8635674168853563" type="AirConsole">
+                                            <param id="0" name="Value">button1</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                            <param id="0" name="Impulse">200</param>
+                                            <param id="1" name="Angle">player.Angle</param>
+                                            <param id="2" name="Image point">0</param>
+                                        </action>
+                                        <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
+                                            <param id="0" name="Folder">0</param>
+                                            <param id="1" name="Audio file name">player.soundName</param>
+                                            <param id="3" name="Loop">0</param>
+                                            <param id="4" name="Volume">-10</param>
+                                            <param id="2" name="Tag (optional)">&quot;player&quot; &amp; player.deviceIndex</param>
+                                        </action>
+                                        <action id="4" name="Set animation" sid="7635433821866747" type="player">
+                                            <param id="0" name="Animation">&quot;Play&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9836922898685177">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="1726993268273771" type="AirConsole">
+                                            <param id="0" name="Value">button2</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="2660758487787543" type="player">
+                                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="5705870673769563">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="2345780932606845" type="AirConsole">
+                                            <param id="0" name="Value">button3</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
+                                            <param id="0" name="Speed">80</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="3063472017572516">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8766223081282974" type="AirConsole">
+                                            <param id="0" name="Value">button4</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
+                                            <param id="0" name="Speed">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9933990043138106">
+                                    <conditions>
+                                        <condition id="3" name="On device left" sid="6826422028561886" type="AirConsole">
+                                            <param id="0" name="DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Set at X" sid="8390249572289325" type="Array">
+                                            <param id="0" name="X">DEVICEINDEX</param>
+                                            <param id="1" name="Value">-1</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="8170293635732778" type="player" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="3529848780865963" title="Device 6">
+                    <sub-events>
+                        <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">6</variable>
+                        <event-block sid="1226413345909272">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="289152838752317" type="player">
+                                    <param id="0" name="Instance variable">deviceIndex</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">Array.At(DEVICEINDEX)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="4890772259685104">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8635674168853563" type="AirConsole">
+                                            <param id="0" name="Value">button1</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                            <param id="0" name="Impulse">200</param>
+                                            <param id="1" name="Angle">player.Angle</param>
+                                            <param id="2" name="Image point">0</param>
+                                        </action>
+                                        <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
+                                            <param id="0" name="Folder">0</param>
+                                            <param id="1" name="Audio file name">player.soundName</param>
+                                            <param id="3" name="Loop">0</param>
+                                            <param id="4" name="Volume">-10</param>
+                                            <param id="2" name="Tag (optional)">&quot;player&quot; &amp; player.deviceIndex</param>
+                                        </action>
+                                        <action id="4" name="Set animation" sid="7635433821866747" type="player">
+                                            <param id="0" name="Animation">&quot;Play&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9836922898685177">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="1726993268273771" type="AirConsole">
+                                            <param id="0" name="Value">button2</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="2660758487787543" type="player">
+                                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="5705870673769563">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="2345780932606845" type="AirConsole">
+                                            <param id="0" name="Value">button3</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
+                                            <param id="0" name="Speed">80</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="3063472017572516">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8766223081282974" type="AirConsole">
+                                            <param id="0" name="Value">button4</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
+                                            <param id="0" name="Speed">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9933990043138106">
+                                    <conditions>
+                                        <condition id="3" name="On device left" sid="6826422028561886" type="AirConsole">
+                                            <param id="0" name="DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Set at X" sid="8390249572289325" type="Array">
+                                            <param id="0" name="X">DEVICEINDEX</param>
+                                            <param id="1" name="Value">-1</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="8170293635732778" type="player" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="5747860173677547" title="Device 7">
+                    <sub-events>
+                        <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">7</variable>
+                        <event-block sid="1226413345909272">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="289152838752317" type="player">
+                                    <param id="0" name="Instance variable">deviceIndex</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">Array.At(DEVICEINDEX)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="4890772259685104">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8635674168853563" type="AirConsole">
+                                            <param id="0" name="Value">button1</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                            <param id="0" name="Impulse">200</param>
+                                            <param id="1" name="Angle">player.Angle</param>
+                                            <param id="2" name="Image point">0</param>
+                                        </action>
+                                        <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
+                                            <param id="0" name="Folder">0</param>
+                                            <param id="1" name="Audio file name">player.soundName</param>
+                                            <param id="3" name="Loop">0</param>
+                                            <param id="4" name="Volume">-10</param>
+                                            <param id="2" name="Tag (optional)">&quot;player&quot; &amp; player.deviceIndex</param>
+                                        </action>
+                                        <action id="4" name="Set animation" sid="7635433821866747" type="player">
+                                            <param id="0" name="Animation">&quot;Play&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9836922898685177">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="1726993268273771" type="AirConsole">
+                                            <param id="0" name="Value">button2</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="2660758487787543" type="player">
+                                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="5705870673769563">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="2345780932606845" type="AirConsole">
+                                            <param id="0" name="Value">button3</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
+                                            <param id="0" name="Speed">80</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="3063472017572516">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8766223081282974" type="AirConsole">
+                                            <param id="0" name="Value">button4</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
+                                            <param id="0" name="Speed">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9933990043138106">
+                                    <conditions>
+                                        <condition id="3" name="On device left" sid="6826422028561886" type="AirConsole">
+                                            <param id="0" name="DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Set at X" sid="8390249572289325" type="Array">
+                                            <param id="0" name="X">DEVICEINDEX</param>
+                                            <param id="1" name="Value">-1</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="8170293635732778" type="player" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="3171906215066365" title="Device 8">
+                    <sub-events>
+                        <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">8</variable>
+                        <event-block sid="1226413345909272">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="289152838752317" type="player">
+                                    <param id="0" name="Instance variable">deviceIndex</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">Array.At(DEVICEINDEX)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="4890772259685104">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8635674168853563" type="AirConsole">
+                                            <param id="0" name="Value">button1</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                            <param id="0" name="Impulse">200</param>
+                                            <param id="1" name="Angle">player.Angle</param>
+                                            <param id="2" name="Image point">0</param>
+                                        </action>
+                                        <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
+                                            <param id="0" name="Folder">0</param>
+                                            <param id="1" name="Audio file name">player.soundName</param>
+                                            <param id="3" name="Loop">0</param>
+                                            <param id="4" name="Volume">-10</param>
+                                            <param id="2" name="Tag (optional)">&quot;player&quot; &amp; player.deviceIndex</param>
+                                        </action>
+                                        <action id="4" name="Set animation" sid="7635433821866747" type="player">
+                                            <param id="0" name="Animation">&quot;Play&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9836922898685177">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="1726993268273771" type="AirConsole">
+                                            <param id="0" name="Value">button2</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="2660758487787543" type="player">
+                                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="5705870673769563">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="2345780932606845" type="AirConsole">
+                                            <param id="0" name="Value">button3</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
+                                            <param id="0" name="Speed">80</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="3063472017572516">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8766223081282974" type="AirConsole">
+                                            <param id="0" name="Value">button4</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
+                                            <param id="0" name="Speed">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9933990043138106">
+                                    <conditions>
+                                        <condition id="3" name="On device left" sid="6826422028561886" type="AirConsole">
+                                            <param id="0" name="DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Set at X" sid="8390249572289325" type="Array">
+                                            <param id="0" name="X">DEVICEINDEX</param>
+                                            <param id="1" name="Value">-1</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="8170293635732778" type="player" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="5427732701541081" title="Device 9">
+                    <sub-events>
+                        <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">9</variable>
+                        <event-block sid="1226413345909272">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="289152838752317" type="player">
+                                    <param id="0" name="Instance variable">deviceIndex</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">Array.At(DEVICEINDEX)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="4890772259685104">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8635674168853563" type="AirConsole">
+                                            <param id="0" name="Value">button1</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                            <param id="0" name="Impulse">200</param>
+                                            <param id="1" name="Angle">player.Angle</param>
+                                            <param id="2" name="Image point">0</param>
+                                        </action>
+                                        <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
+                                            <param id="0" name="Folder">0</param>
+                                            <param id="1" name="Audio file name">player.soundName</param>
+                                            <param id="3" name="Loop">0</param>
+                                            <param id="4" name="Volume">-10</param>
+                                            <param id="2" name="Tag (optional)">&quot;player&quot; &amp; player.deviceIndex</param>
+                                        </action>
+                                        <action id="4" name="Set animation" sid="7635433821866747" type="player">
+                                            <param id="0" name="Animation">&quot;Play&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9836922898685177">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="1726993268273771" type="AirConsole">
+                                            <param id="0" name="Value">button2</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="2660758487787543" type="player">
+                                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="5705870673769563">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="2345780932606845" type="AirConsole">
+                                            <param id="0" name="Value">button3</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
+                                            <param id="0" name="Speed">80</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="3063472017572516">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8766223081282974" type="AirConsole">
+                                            <param id="0" name="Value">button4</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
+                                            <param id="0" name="Speed">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9933990043138106">
+                                    <conditions>
+                                        <condition id="3" name="On device left" sid="6826422028561886" type="AirConsole">
+                                            <param id="0" name="DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Set at X" sid="8390249572289325" type="Array">
+                                            <param id="0" name="X">DEVICEINDEX</param>
+                                            <param id="1" name="Value">-1</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="8170293635732778" type="player" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="5375958553108659" title="Device 10">
+                    <sub-events>
+                        <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">10</variable>
+                        <event-block sid="1226413345909272">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="289152838752317" type="player">
+                                    <param id="0" name="Instance variable">deviceIndex</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">Array.At(DEVICEINDEX)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="4890772259685104">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8635674168853563" type="AirConsole">
+                                            <param id="0" name="Value">button1</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                            <param id="0" name="Impulse">200</param>
+                                            <param id="1" name="Angle">player.Angle</param>
+                                            <param id="2" name="Image point">0</param>
+                                        </action>
+                                        <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
+                                            <param id="0" name="Folder">0</param>
+                                            <param id="1" name="Audio file name">player.soundName</param>
+                                            <param id="3" name="Loop">0</param>
+                                            <param id="4" name="Volume">-10</param>
+                                            <param id="2" name="Tag (optional)">&quot;player&quot; &amp; player.deviceIndex</param>
+                                        </action>
+                                        <action id="4" name="Set animation" sid="7635433821866747" type="player">
+                                            <param id="0" name="Animation">&quot;Play&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9836922898685177">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="1726993268273771" type="AirConsole">
+                                            <param id="0" name="Value">button2</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="2660758487787543" type="player">
+                                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="5705870673769563">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="2345780932606845" type="AirConsole">
+                                            <param id="0" name="Value">button3</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
+                                            <param id="0" name="Speed">80</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="3063472017572516">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8766223081282974" type="AirConsole">
+                                            <param id="0" name="Value">button4</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
+                                            <param id="0" name="Speed">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9933990043138106">
+                                    <conditions>
+                                        <condition id="3" name="On device left" sid="6826422028561886" type="AirConsole">
+                                            <param id="0" name="DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Set at X" sid="8390249572289325" type="Array">
+                                            <param id="0" name="X">DEVICEINDEX</param>
+                                            <param id="1" name="Value">-1</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="8170293635732778" type="player" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="5866544393954837" title="Device 11">
+                    <sub-events>
+                        <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">11</variable>
+                        <event-block sid="1226413345909272">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="289152838752317" type="player">
+                                    <param id="0" name="Instance variable">deviceIndex</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">Array.At(DEVICEINDEX)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="4890772259685104">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8635674168853563" type="AirConsole">
+                                            <param id="0" name="Value">button1</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                            <param id="0" name="Impulse">200</param>
+                                            <param id="1" name="Angle">player.Angle</param>
+                                            <param id="2" name="Image point">0</param>
+                                        </action>
+                                        <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
+                                            <param id="0" name="Folder">0</param>
+                                            <param id="1" name="Audio file name">player.soundName</param>
+                                            <param id="3" name="Loop">0</param>
+                                            <param id="4" name="Volume">-10</param>
+                                            <param id="2" name="Tag (optional)">&quot;player&quot; &amp; player.deviceIndex</param>
+                                        </action>
+                                        <action id="4" name="Set animation" sid="7635433821866747" type="player">
+                                            <param id="0" name="Animation">&quot;Play&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9836922898685177">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="1726993268273771" type="AirConsole">
+                                            <param id="0" name="Value">button2</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="2660758487787543" type="player">
+                                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="5705870673769563">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="2345780932606845" type="AirConsole">
+                                            <param id="0" name="Value">button3</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
+                                            <param id="0" name="Speed">80</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="3063472017572516">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8766223081282974" type="AirConsole">
+                                            <param id="0" name="Value">button4</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
+                                            <param id="0" name="Speed">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9933990043138106">
+                                    <conditions>
+                                        <condition id="3" name="On device left" sid="6826422028561886" type="AirConsole">
+                                            <param id="0" name="DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Set at X" sid="8390249572289325" type="Array">
+                                            <param id="0" name="X">DEVICEINDEX</param>
+                                            <param id="1" name="Value">-1</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="8170293635732778" type="player" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="2255991706714947" title="Device 12">
+                    <sub-events>
+                        <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">12</variable>
+                        <event-block sid="1226413345909272">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="289152838752317" type="player">
+                                    <param id="0" name="Instance variable">deviceIndex</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">Array.At(DEVICEINDEX)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="4890772259685104">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8635674168853563" type="AirConsole">
+                                            <param id="0" name="Value">button1</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                            <param id="0" name="Impulse">200</param>
+                                            <param id="1" name="Angle">player.Angle</param>
+                                            <param id="2" name="Image point">0</param>
+                                        </action>
+                                        <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
+                                            <param id="0" name="Folder">0</param>
+                                            <param id="1" name="Audio file name">player.soundName</param>
+                                            <param id="3" name="Loop">0</param>
+                                            <param id="4" name="Volume">-10</param>
+                                            <param id="2" name="Tag (optional)">&quot;player&quot; &amp; player.deviceIndex</param>
+                                        </action>
+                                        <action id="4" name="Set animation" sid="7635433821866747" type="player">
+                                            <param id="0" name="Animation">&quot;Play&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9836922898685177">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="1726993268273771" type="AirConsole">
+                                            <param id="0" name="Value">button2</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="2660758487787543" type="player">
+                                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="5705870673769563">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="2345780932606845" type="AirConsole">
+                                            <param id="0" name="Value">button3</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
+                                            <param id="0" name="Speed">80</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="3063472017572516">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8766223081282974" type="AirConsole">
+                                            <param id="0" name="Value">button4</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
+                                            <param id="0" name="Speed">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9933990043138106">
+                                    <conditions>
+                                        <condition id="3" name="On device left" sid="6826422028561886" type="AirConsole">
+                                            <param id="0" name="DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Set at X" sid="8390249572289325" type="Array">
+                                            <param id="0" name="X">DEVICEINDEX</param>
+                                            <param id="1" name="Value">-1</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="8170293635732778" type="player" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="3770544617516922" title="Device 13">
+                    <sub-events>
+                        <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">13</variable>
+                        <event-block sid="1226413345909272">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="289152838752317" type="player">
+                                    <param id="0" name="Instance variable">deviceIndex</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">Array.At(DEVICEINDEX)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="4890772259685104">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8635674168853563" type="AirConsole">
+                                            <param id="0" name="Value">button1</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                            <param id="0" name="Impulse">200</param>
+                                            <param id="1" name="Angle">player.Angle</param>
+                                            <param id="2" name="Image point">0</param>
+                                        </action>
+                                        <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
+                                            <param id="0" name="Folder">0</param>
+                                            <param id="1" name="Audio file name">player.soundName</param>
+                                            <param id="3" name="Loop">0</param>
+                                            <param id="4" name="Volume">-10</param>
+                                            <param id="2" name="Tag (optional)">&quot;player&quot; &amp; player.deviceIndex</param>
+                                        </action>
+                                        <action id="4" name="Set animation" sid="7635433821866747" type="player">
+                                            <param id="0" name="Animation">&quot;Play&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9836922898685177">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="1726993268273771" type="AirConsole">
+                                            <param id="0" name="Value">button2</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="2660758487787543" type="player">
+                                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="5705870673769563">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="2345780932606845" type="AirConsole">
+                                            <param id="0" name="Value">button3</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
+                                            <param id="0" name="Speed">80</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="3063472017572516">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8766223081282974" type="AirConsole">
+                                            <param id="0" name="Value">button4</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
+                                            <param id="0" name="Speed">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9933990043138106">
+                                    <conditions>
+                                        <condition id="3" name="On device left" sid="6826422028561886" type="AirConsole">
+                                            <param id="0" name="DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Set at X" sid="8390249572289325" type="Array">
+                                            <param id="0" name="X">DEVICEINDEX</param>
+                                            <param id="1" name="Value">-1</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="8170293635732778" type="player" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="2942047437284477" title="Device 14">
+                    <sub-events>
+                        <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">14</variable>
+                        <event-block sid="1226413345909272">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="289152838752317" type="player">
+                                    <param id="0" name="Instance variable">deviceIndex</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">Array.At(DEVICEINDEX)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="4890772259685104">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8635674168853563" type="AirConsole">
+                                            <param id="0" name="Value">button1</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                            <param id="0" name="Impulse">200</param>
+                                            <param id="1" name="Angle">player.Angle</param>
+                                            <param id="2" name="Image point">0</param>
+                                        </action>
+                                        <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
+                                            <param id="0" name="Folder">0</param>
+                                            <param id="1" name="Audio file name">player.soundName</param>
+                                            <param id="3" name="Loop">0</param>
+                                            <param id="4" name="Volume">-10</param>
+                                            <param id="2" name="Tag (optional)">&quot;player&quot; &amp; player.deviceIndex</param>
+                                        </action>
+                                        <action id="4" name="Set animation" sid="7635433821866747" type="player">
+                                            <param id="0" name="Animation">&quot;Play&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9836922898685177">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="1726993268273771" type="AirConsole">
+                                            <param id="0" name="Value">button2</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="2660758487787543" type="player">
+                                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="5705870673769563">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="2345780932606845" type="AirConsole">
+                                            <param id="0" name="Value">button3</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
+                                            <param id="0" name="Speed">80</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="3063472017572516">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8766223081282974" type="AirConsole">
+                                            <param id="0" name="Value">button4</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
+                                            <param id="0" name="Speed">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9933990043138106">
+                                    <conditions>
+                                        <condition id="3" name="On device left" sid="6826422028561886" type="AirConsole">
+                                            <param id="0" name="DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Set at X" sid="8390249572289325" type="Array">
+                                            <param id="0" name="X">DEVICEINDEX</param>
+                                            <param id="1" name="Value">-1</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="8170293635732778" type="player" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-group description="" sid="9137865083517613" title="Device 15">
+                    <sub-events>
+                        <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">15</variable>
+                        <event-block sid="1226413345909272">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="289152838752317" type="player">
+                                    <param id="0" name="Instance variable">deviceIndex</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">Array.At(DEVICEINDEX)</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="4890772259685104">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8635674168853563" type="AirConsole">
+                                            <param id="0" name="Value">button1</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                            <param id="0" name="Impulse">200</param>
+                                            <param id="1" name="Angle">player.Angle</param>
+                                            <param id="2" name="Image point">0</param>
+                                        </action>
+                                        <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
+                                            <param id="0" name="Folder">0</param>
+                                            <param id="1" name="Audio file name">player.soundName</param>
+                                            <param id="3" name="Loop">0</param>
+                                            <param id="4" name="Volume">-10</param>
+                                            <param id="2" name="Tag (optional)">&quot;player&quot; &amp; player.deviceIndex</param>
+                                        </action>
+                                        <action id="4" name="Set animation" sid="7635433821866747" type="player">
+                                            <param id="0" name="Animation">&quot;Play&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9836922898685177">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="1726993268273771" type="AirConsole">
+                                            <param id="0" name="Value">button2</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="4" name="Set animation" sid="2660758487787543" type="player">
+                                            <param id="0" name="Animation">&quot;Default&quot;</param>
+                                            <param id="1" name="From">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="5705870673769563">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="2345780932606845" type="AirConsole">
+                                            <param id="0" name="Value">button3</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
+                                            <param id="0" name="Speed">80</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="3063472017572516">
+                                    <conditions>
+                                        <condition id="1" name="On message" sid="8766223081282974" type="AirConsole">
+                                            <param id="0" name="Value">button4</param>
+                                            <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
+                                            <param id="0" name="Speed">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9933990043138106">
+                                    <conditions>
+                                        <condition id="3" name="On device left" sid="6826422028561886" type="AirConsole">
+                                            <param id="0" name="DeviceID">Array.At(DEVICEINDEX)</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="2" name="Set at X" sid="8390249572289325" type="Array">
+                                            <param id="0" name="X">DEVICEINDEX</param>
+                                            <param id="1" name="Value">-1</param>
+                                        </action>
+                                        <action id="-9" name="Destroy" sid="8170293635732778" type="player" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>
