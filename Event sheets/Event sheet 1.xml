@@ -143,7 +143,7 @@
                         </action>
                         <action behavior="Pin" id="0" name="Pin to object" sid="5690165895707493" type="arrow">
                             <param id="0" name="Pin to">player</param>
-                            <param id="1" name="Mode">0</param>
+                            <param id="1" name="Mode">1</param>
                         </action>
                         <action id="-10" name="Set value" sid="8662457253212779" type="player">
                             <param id="0" name="Instance variable">deviceIndex</param>
@@ -251,7 +251,7 @@
                     <param id="0" name="Folder">0</param>
                     <param id="1" name="Audio file name">&quot;Pulse &quot; &amp; nextCollisionIndex</param>
                     <param id="3" name="Loop">0</param>
-                    <param id="4" name="Volume">-10</param>
+                    <param id="4" name="Volume">-20</param>
                     <param id="2" name="Tag (optional)">&quot;collision&quot;</param>
                 </action>
                 <action id="-10" name="Add to" sid="8482303820260449" type="System">
@@ -300,11 +300,6 @@
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
-                                            <param id="0" name="Impulse">200</param>
-                                            <param id="1" name="Angle">player.Angle</param>
-                                            <param id="2" name="Image point">0</param>
-                                        </action>
                                         <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
                                             <param id="0" name="Folder">0</param>
                                             <param id="1" name="Audio file name">player.soundName</param>
@@ -317,6 +312,25 @@
                                             <param id="1" name="From">0</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="5254838393894905">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6800105340209533" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                                    <param id="0" name="Impulse">200</param>
+                                                    <param id="1" name="Angle">arrow.Angle</param>
+                                                    <param id="2" name="Image point">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9836922898685177">
                                     <conditions>
@@ -339,11 +353,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="1820901627470255" type="player">
-                                            <param id="0" name="Speed">80</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="3216470535883467">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6552632992124179" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="1820901627470255" type="arrow">
+                                                    <param id="0" name="Speed">100</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="3063472017572516">
                                     <conditions>
@@ -352,11 +379,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
-                                            <param id="0" name="Speed">0</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="9243759484799239">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="5508205814160482" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="arrow">
+                                                    <param id="0" name="Speed">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9933990043138106">
                                     <conditions>
@@ -376,7 +416,7 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group description="" sid="9104889575472758" title="Device 1">
+                <event-group description="" sid="156641936034541" title="Device 1">
                     <sub-events>
                         <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">1</variable>
                         <event-block sid="1226413345909272">
@@ -397,11 +437,6 @@
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
-                                            <param id="0" name="Impulse">200</param>
-                                            <param id="1" name="Angle">player.Angle</param>
-                                            <param id="2" name="Image point">0</param>
-                                        </action>
                                         <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
                                             <param id="0" name="Folder">0</param>
                                             <param id="1" name="Audio file name">player.soundName</param>
@@ -414,6 +449,25 @@
                                             <param id="1" name="From">0</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="5254838393894905">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6800105340209533" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                                    <param id="0" name="Impulse">200</param>
+                                                    <param id="1" name="Angle">arrow.Angle</param>
+                                                    <param id="2" name="Image point">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9836922898685177">
                                     <conditions>
@@ -436,11 +490,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
-                                            <param id="0" name="Speed">80</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="3216470535883467">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6552632992124179" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="1820901627470255" type="arrow">
+                                                    <param id="0" name="Speed">100</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="3063472017572516">
                                     <conditions>
@@ -449,11 +516,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
-                                            <param id="0" name="Speed">0</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="9243759484799239">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="5508205814160482" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="arrow">
+                                                    <param id="0" name="Speed">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9933990043138106">
                                     <conditions>
@@ -473,7 +553,7 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group description="" sid="3300630919810119" title="Device 2">
+                <event-group description="" sid="2639505809006246" title="Device 2">
                     <sub-events>
                         <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">2</variable>
                         <event-block sid="1226413345909272">
@@ -494,11 +574,6 @@
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
-                                            <param id="0" name="Impulse">200</param>
-                                            <param id="1" name="Angle">player.Angle</param>
-                                            <param id="2" name="Image point">0</param>
-                                        </action>
                                         <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
                                             <param id="0" name="Folder">0</param>
                                             <param id="1" name="Audio file name">player.soundName</param>
@@ -511,6 +586,25 @@
                                             <param id="1" name="From">0</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="5254838393894905">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6800105340209533" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                                    <param id="0" name="Impulse">200</param>
+                                                    <param id="1" name="Angle">arrow.Angle</param>
+                                                    <param id="2" name="Image point">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9836922898685177">
                                     <conditions>
@@ -533,11 +627,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
-                                            <param id="0" name="Speed">80</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="3216470535883467">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6552632992124179" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="1820901627470255" type="arrow">
+                                                    <param id="0" name="Speed">100</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="3063472017572516">
                                     <conditions>
@@ -546,11 +653,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
-                                            <param id="0" name="Speed">0</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="9243759484799239">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="5508205814160482" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="arrow">
+                                                    <param id="0" name="Speed">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9933990043138106">
                                     <conditions>
@@ -570,7 +690,7 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group description="" sid="389149531477673" title="Device 3">
+                <event-group description="" sid="1302470521488398" title="Device 3">
                     <sub-events>
                         <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">3</variable>
                         <event-block sid="1226413345909272">
@@ -591,11 +711,6 @@
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
-                                            <param id="0" name="Impulse">200</param>
-                                            <param id="1" name="Angle">player.Angle</param>
-                                            <param id="2" name="Image point">0</param>
-                                        </action>
                                         <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
                                             <param id="0" name="Folder">0</param>
                                             <param id="1" name="Audio file name">player.soundName</param>
@@ -608,6 +723,25 @@
                                             <param id="1" name="From">0</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="5254838393894905">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6800105340209533" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                                    <param id="0" name="Impulse">200</param>
+                                                    <param id="1" name="Angle">arrow.Angle</param>
+                                                    <param id="2" name="Image point">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9836922898685177">
                                     <conditions>
@@ -630,11 +764,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
-                                            <param id="0" name="Speed">80</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="3216470535883467">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6552632992124179" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="1820901627470255" type="arrow">
+                                                    <param id="0" name="Speed">100</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="3063472017572516">
                                     <conditions>
@@ -643,11 +790,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
-                                            <param id="0" name="Speed">0</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="9243759484799239">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="5508205814160482" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="arrow">
+                                                    <param id="0" name="Speed">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9933990043138106">
                                     <conditions>
@@ -667,7 +827,7 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group description="" sid="3578572687006823" title="Device 4">
+                <event-group description="" sid="1833953301726426" title="Device 4">
                     <sub-events>
                         <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">4</variable>
                         <event-block sid="1226413345909272">
@@ -688,11 +848,6 @@
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
-                                            <param id="0" name="Impulse">200</param>
-                                            <param id="1" name="Angle">player.Angle</param>
-                                            <param id="2" name="Image point">0</param>
-                                        </action>
                                         <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
                                             <param id="0" name="Folder">0</param>
                                             <param id="1" name="Audio file name">player.soundName</param>
@@ -705,6 +860,25 @@
                                             <param id="1" name="From">0</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="5254838393894905">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6800105340209533" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                                    <param id="0" name="Impulse">200</param>
+                                                    <param id="1" name="Angle">arrow.Angle</param>
+                                                    <param id="2" name="Image point">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9836922898685177">
                                     <conditions>
@@ -727,11 +901,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
-                                            <param id="0" name="Speed">80</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="3216470535883467">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6552632992124179" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="1820901627470255" type="arrow">
+                                                    <param id="0" name="Speed">100</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="3063472017572516">
                                     <conditions>
@@ -740,11 +927,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
-                                            <param id="0" name="Speed">0</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="9243759484799239">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="5508205814160482" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="arrow">
+                                                    <param id="0" name="Speed">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9933990043138106">
                                     <conditions>
@@ -764,7 +964,7 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group description="" sid="400519728801732" title="Device 5">
+                <event-group description="" sid="5082121222796731" title="Device 5">
                     <sub-events>
                         <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">5</variable>
                         <event-block sid="1226413345909272">
@@ -785,11 +985,6 @@
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
-                                            <param id="0" name="Impulse">200</param>
-                                            <param id="1" name="Angle">player.Angle</param>
-                                            <param id="2" name="Image point">0</param>
-                                        </action>
                                         <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
                                             <param id="0" name="Folder">0</param>
                                             <param id="1" name="Audio file name">player.soundName</param>
@@ -802,6 +997,25 @@
                                             <param id="1" name="From">0</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="5254838393894905">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6800105340209533" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                                    <param id="0" name="Impulse">200</param>
+                                                    <param id="1" name="Angle">arrow.Angle</param>
+                                                    <param id="2" name="Image point">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9836922898685177">
                                     <conditions>
@@ -824,11 +1038,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
-                                            <param id="0" name="Speed">80</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="3216470535883467">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6552632992124179" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="1820901627470255" type="arrow">
+                                                    <param id="0" name="Speed">100</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="3063472017572516">
                                     <conditions>
@@ -837,11 +1064,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
-                                            <param id="0" name="Speed">0</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="9243759484799239">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="5508205814160482" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="arrow">
+                                                    <param id="0" name="Speed">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9933990043138106">
                                     <conditions>
@@ -861,7 +1101,7 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group description="" sid="3529848780865963" title="Device 6">
+                <event-group description="" sid="4296378447716118" title="Device 6">
                     <sub-events>
                         <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">6</variable>
                         <event-block sid="1226413345909272">
@@ -882,11 +1122,6 @@
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
-                                            <param id="0" name="Impulse">200</param>
-                                            <param id="1" name="Angle">player.Angle</param>
-                                            <param id="2" name="Image point">0</param>
-                                        </action>
                                         <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
                                             <param id="0" name="Folder">0</param>
                                             <param id="1" name="Audio file name">player.soundName</param>
@@ -899,6 +1134,25 @@
                                             <param id="1" name="From">0</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="5254838393894905">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6800105340209533" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                                    <param id="0" name="Impulse">200</param>
+                                                    <param id="1" name="Angle">arrow.Angle</param>
+                                                    <param id="2" name="Image point">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9836922898685177">
                                     <conditions>
@@ -921,11 +1175,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
-                                            <param id="0" name="Speed">80</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="3216470535883467">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6552632992124179" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="1820901627470255" type="arrow">
+                                                    <param id="0" name="Speed">100</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="3063472017572516">
                                     <conditions>
@@ -934,11 +1201,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
-                                            <param id="0" name="Speed">0</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="9243759484799239">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="5508205814160482" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="arrow">
+                                                    <param id="0" name="Speed">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9933990043138106">
                                     <conditions>
@@ -958,7 +1238,7 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group description="" sid="5747860173677547" title="Device 7">
+                <event-group description="" sid="6726040228432838" title="Device 7">
                     <sub-events>
                         <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">7</variable>
                         <event-block sid="1226413345909272">
@@ -979,11 +1259,6 @@
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
-                                            <param id="0" name="Impulse">200</param>
-                                            <param id="1" name="Angle">player.Angle</param>
-                                            <param id="2" name="Image point">0</param>
-                                        </action>
                                         <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
                                             <param id="0" name="Folder">0</param>
                                             <param id="1" name="Audio file name">player.soundName</param>
@@ -996,6 +1271,25 @@
                                             <param id="1" name="From">0</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="5254838393894905">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6800105340209533" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                                    <param id="0" name="Impulse">200</param>
+                                                    <param id="1" name="Angle">arrow.Angle</param>
+                                                    <param id="2" name="Image point">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9836922898685177">
                                     <conditions>
@@ -1018,11 +1312,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
-                                            <param id="0" name="Speed">80</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="3216470535883467">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6552632992124179" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="1820901627470255" type="arrow">
+                                                    <param id="0" name="Speed">100</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="3063472017572516">
                                     <conditions>
@@ -1031,11 +1338,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
-                                            <param id="0" name="Speed">0</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="9243759484799239">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="5508205814160482" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="arrow">
+                                                    <param id="0" name="Speed">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9933990043138106">
                                     <conditions>
@@ -1055,7 +1375,7 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group description="" sid="3171906215066365" title="Device 8">
+                <event-group description="" sid="424364331304155" title="Device 8">
                     <sub-events>
                         <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">8</variable>
                         <event-block sid="1226413345909272">
@@ -1076,11 +1396,6 @@
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
-                                            <param id="0" name="Impulse">200</param>
-                                            <param id="1" name="Angle">player.Angle</param>
-                                            <param id="2" name="Image point">0</param>
-                                        </action>
                                         <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
                                             <param id="0" name="Folder">0</param>
                                             <param id="1" name="Audio file name">player.soundName</param>
@@ -1093,6 +1408,25 @@
                                             <param id="1" name="From">0</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="5254838393894905">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6800105340209533" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                                    <param id="0" name="Impulse">200</param>
+                                                    <param id="1" name="Angle">arrow.Angle</param>
+                                                    <param id="2" name="Image point">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9836922898685177">
                                     <conditions>
@@ -1115,11 +1449,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
-                                            <param id="0" name="Speed">80</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="3216470535883467">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6552632992124179" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="1820901627470255" type="arrow">
+                                                    <param id="0" name="Speed">100</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="3063472017572516">
                                     <conditions>
@@ -1128,11 +1475,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
-                                            <param id="0" name="Speed">0</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="9243759484799239">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="5508205814160482" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="arrow">
+                                                    <param id="0" name="Speed">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9933990043138106">
                                     <conditions>
@@ -1152,7 +1512,7 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group description="" sid="5427732701541081" title="Device 9">
+                <event-group description="" sid="4520957378884628" title="Device 9">
                     <sub-events>
                         <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">9</variable>
                         <event-block sid="1226413345909272">
@@ -1173,11 +1533,6 @@
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
-                                            <param id="0" name="Impulse">200</param>
-                                            <param id="1" name="Angle">player.Angle</param>
-                                            <param id="2" name="Image point">0</param>
-                                        </action>
                                         <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
                                             <param id="0" name="Folder">0</param>
                                             <param id="1" name="Audio file name">player.soundName</param>
@@ -1190,6 +1545,25 @@
                                             <param id="1" name="From">0</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="5254838393894905">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6800105340209533" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                                    <param id="0" name="Impulse">200</param>
+                                                    <param id="1" name="Angle">arrow.Angle</param>
+                                                    <param id="2" name="Image point">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9836922898685177">
                                     <conditions>
@@ -1212,11 +1586,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
-                                            <param id="0" name="Speed">80</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="3216470535883467">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6552632992124179" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="1820901627470255" type="arrow">
+                                                    <param id="0" name="Speed">100</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="3063472017572516">
                                     <conditions>
@@ -1225,11 +1612,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
-                                            <param id="0" name="Speed">0</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="9243759484799239">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="5508205814160482" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="arrow">
+                                                    <param id="0" name="Speed">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9933990043138106">
                                     <conditions>
@@ -1249,7 +1649,7 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group description="" sid="5375958553108659" title="Device 10">
+                <event-group description="" sid="511561833592216" title="Device 10">
                     <sub-events>
                         <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">10</variable>
                         <event-block sid="1226413345909272">
@@ -1270,11 +1670,6 @@
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
-                                            <param id="0" name="Impulse">200</param>
-                                            <param id="1" name="Angle">player.Angle</param>
-                                            <param id="2" name="Image point">0</param>
-                                        </action>
                                         <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
                                             <param id="0" name="Folder">0</param>
                                             <param id="1" name="Audio file name">player.soundName</param>
@@ -1287,6 +1682,25 @@
                                             <param id="1" name="From">0</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="5254838393894905">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6800105340209533" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                                    <param id="0" name="Impulse">200</param>
+                                                    <param id="1" name="Angle">arrow.Angle</param>
+                                                    <param id="2" name="Image point">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9836922898685177">
                                     <conditions>
@@ -1309,11 +1723,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
-                                            <param id="0" name="Speed">80</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="3216470535883467">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6552632992124179" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="1820901627470255" type="arrow">
+                                                    <param id="0" name="Speed">100</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="3063472017572516">
                                     <conditions>
@@ -1322,11 +1749,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
-                                            <param id="0" name="Speed">0</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="9243759484799239">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="5508205814160482" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="arrow">
+                                                    <param id="0" name="Speed">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9933990043138106">
                                     <conditions>
@@ -1346,7 +1786,7 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group description="" sid="5866544393954837" title="Device 11">
+                <event-group description="" sid="4525173143338746" title="Device 11">
                     <sub-events>
                         <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">11</variable>
                         <event-block sid="1226413345909272">
@@ -1367,11 +1807,6 @@
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
-                                            <param id="0" name="Impulse">200</param>
-                                            <param id="1" name="Angle">player.Angle</param>
-                                            <param id="2" name="Image point">0</param>
-                                        </action>
                                         <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
                                             <param id="0" name="Folder">0</param>
                                             <param id="1" name="Audio file name">player.soundName</param>
@@ -1384,6 +1819,25 @@
                                             <param id="1" name="From">0</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="5254838393894905">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6800105340209533" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                                    <param id="0" name="Impulse">200</param>
+                                                    <param id="1" name="Angle">arrow.Angle</param>
+                                                    <param id="2" name="Image point">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9836922898685177">
                                     <conditions>
@@ -1406,11 +1860,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
-                                            <param id="0" name="Speed">80</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="3216470535883467">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6552632992124179" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="1820901627470255" type="arrow">
+                                                    <param id="0" name="Speed">100</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="3063472017572516">
                                     <conditions>
@@ -1419,11 +1886,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
-                                            <param id="0" name="Speed">0</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="9243759484799239">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="5508205814160482" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="arrow">
+                                                    <param id="0" name="Speed">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9933990043138106">
                                     <conditions>
@@ -1443,7 +1923,7 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group description="" sid="2255991706714947" title="Device 12">
+                <event-group description="" sid="9324733838823396" title="Device 12">
                     <sub-events>
                         <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">12</variable>
                         <event-block sid="1226413345909272">
@@ -1464,11 +1944,6 @@
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
-                                            <param id="0" name="Impulse">200</param>
-                                            <param id="1" name="Angle">player.Angle</param>
-                                            <param id="2" name="Image point">0</param>
-                                        </action>
                                         <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
                                             <param id="0" name="Folder">0</param>
                                             <param id="1" name="Audio file name">player.soundName</param>
@@ -1481,6 +1956,25 @@
                                             <param id="1" name="From">0</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="5254838393894905">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6800105340209533" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                                    <param id="0" name="Impulse">200</param>
+                                                    <param id="1" name="Angle">arrow.Angle</param>
+                                                    <param id="2" name="Image point">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9836922898685177">
                                     <conditions>
@@ -1503,11 +1997,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
-                                            <param id="0" name="Speed">80</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="3216470535883467">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6552632992124179" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="1820901627470255" type="arrow">
+                                                    <param id="0" name="Speed">100</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="3063472017572516">
                                     <conditions>
@@ -1516,11 +2023,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
-                                            <param id="0" name="Speed">0</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="9243759484799239">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="5508205814160482" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="arrow">
+                                                    <param id="0" name="Speed">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9933990043138106">
                                     <conditions>
@@ -1540,7 +2060,7 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group description="" sid="3770544617516922" title="Device 13">
+                <event-group description="" sid="9880416195380259" title="Device 13">
                     <sub-events>
                         <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">13</variable>
                         <event-block sid="1226413345909272">
@@ -1561,11 +2081,6 @@
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
-                                            <param id="0" name="Impulse">200</param>
-                                            <param id="1" name="Angle">player.Angle</param>
-                                            <param id="2" name="Image point">0</param>
-                                        </action>
                                         <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
                                             <param id="0" name="Folder">0</param>
                                             <param id="1" name="Audio file name">player.soundName</param>
@@ -1578,6 +2093,25 @@
                                             <param id="1" name="From">0</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="5254838393894905">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6800105340209533" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                                    <param id="0" name="Impulse">200</param>
+                                                    <param id="1" name="Angle">arrow.Angle</param>
+                                                    <param id="2" name="Image point">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9836922898685177">
                                     <conditions>
@@ -1600,11 +2134,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
-                                            <param id="0" name="Speed">80</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="3216470535883467">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6552632992124179" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="1820901627470255" type="arrow">
+                                                    <param id="0" name="Speed">100</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="3063472017572516">
                                     <conditions>
@@ -1613,11 +2160,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
-                                            <param id="0" name="Speed">0</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="9243759484799239">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="5508205814160482" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="arrow">
+                                                    <param id="0" name="Speed">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9933990043138106">
                                     <conditions>
@@ -1637,7 +2197,7 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group description="" sid="2942047437284477" title="Device 14">
+                <event-group description="" sid="2611292677779569" title="Device 14">
                     <sub-events>
                         <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">14</variable>
                         <event-block sid="1226413345909272">
@@ -1658,11 +2218,6 @@
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
-                                            <param id="0" name="Impulse">200</param>
-                                            <param id="1" name="Angle">player.Angle</param>
-                                            <param id="2" name="Image point">0</param>
-                                        </action>
                                         <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
                                             <param id="0" name="Folder">0</param>
                                             <param id="1" name="Audio file name">player.soundName</param>
@@ -1675,6 +2230,25 @@
                                             <param id="1" name="From">0</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="5254838393894905">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6800105340209533" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                                    <param id="0" name="Impulse">200</param>
+                                                    <param id="1" name="Angle">arrow.Angle</param>
+                                                    <param id="2" name="Image point">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9836922898685177">
                                     <conditions>
@@ -1697,11 +2271,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
-                                            <param id="0" name="Speed">80</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="3216470535883467">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6552632992124179" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="1820901627470255" type="arrow">
+                                                    <param id="0" name="Speed">100</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="3063472017572516">
                                     <conditions>
@@ -1710,11 +2297,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
-                                            <param id="0" name="Speed">0</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="9243759484799239">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="5508205814160482" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="arrow">
+                                                    <param id="0" name="Speed">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9933990043138106">
                                     <conditions>
@@ -1734,7 +2334,7 @@
                         </event-block>
                     </sub-events>
                 </event-group>
-                <event-group description="" sid="9137865083517613" title="Device 15">
+                <event-group description="" sid="9528656233279983" title="Device 15">
                     <sub-events>
                         <variable constant="1" name="DEVICEINDEX" sid="4810874398221788" static="1" type="number">15</variable>
                         <event-block sid="1226413345909272">
@@ -1755,11 +2355,6 @@
                                         </condition>
                                     </conditions>
                                     <actions>
-                                        <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
-                                            <param id="0" name="Impulse">200</param>
-                                            <param id="1" name="Angle">player.Angle</param>
-                                            <param id="2" name="Image point">0</param>
-                                        </action>
                                         <action id="7" name="Play (by name)" sid="883572604458924" type="Audio">
                                             <param id="0" name="Folder">0</param>
                                             <param id="1" name="Audio file name">player.soundName</param>
@@ -1772,6 +2367,25 @@
                                             <param id="1" name="From">0</param>
                                         </action>
                                     </actions>
+                                    <sub-events>
+                                        <event-block sid="5254838393894905">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6800105340209533" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Physics" id="5" name="Apply impulse at angle" sid="687085392077793" type="player">
+                                                    <param id="0" name="Impulse">200</param>
+                                                    <param id="1" name="Angle">arrow.Angle</param>
+                                                    <param id="2" name="Image point">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9836922898685177">
                                     <conditions>
@@ -1794,11 +2408,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="5877893712661786" type="player">
-                                            <param id="0" name="Speed">80</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="3216470535883467">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="6552632992124179" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="1820901627470255" type="arrow">
+                                                    <param id="0" name="Speed">100</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="3063472017572516">
                                     <conditions>
@@ -1807,11 +2434,24 @@
                                             <param id="1" name="Object DeviceID">Array.At(DEVICEINDEX)</param>
                                         </condition>
                                     </conditions>
-                                    <actions>
-                                        <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="player">
-                                            <param id="0" name="Speed">0</param>
-                                        </action>
-                                    </actions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="9243759484799239">
+                                            <conditions>
+                                                <condition id="-33" name="Pick by comparison" sid="5508205814160482" type="System">
+                                                    <param id="0" name="Object">arrow</param>
+                                                    <param id="1" name="Expression">arrow.Pin.PinnedUID</param>
+                                                    <param id="2" name="Comparison">0</param>
+                                                    <param id="3" name="Value">player.UID</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="Rotate" id="0" name="Set speed" sid="6251804125727465" type="arrow">
+                                                    <param id="0" name="Speed">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
                                 </event-block>
                                 <event-block sid="9933990043138106">
                                     <conditions>

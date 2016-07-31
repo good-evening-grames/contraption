@@ -184,6 +184,9 @@
                 <behavior-type name="Pin" sid="7962929490705002">
                     <behavior id="Pin" />
                 </behavior-type>
+                <behavior-type name="Rotate" sid="9959438061758453">
+                    <behavior id="Rotate" />
+                </behavior-type>
             </behaviors>
             <container>
                 <type>arrow</type>
